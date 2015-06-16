@@ -28,11 +28,11 @@ public class JpaTest extends WithApplication {
         em.getTransaction().begin();
         try {
             em.persist(tm);
+            em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
             logger.error(e.getMessage());
         }
-        em.getTransaction().commit();
     }
 
     @Test
@@ -48,11 +48,11 @@ public class JpaTest extends WithApplication {
         em.getTransaction().begin();
         try {
             em.merge(tm);
+            em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
             logger.error(e.getMessage());
         }
-        em.getTransaction().commit();
         Assert.assertTrue(tm.isResult());
     }
 
@@ -74,10 +74,10 @@ public class JpaTest extends WithApplication {
         em.getTransaction().begin();
         try {
             em.remove(tm);
+            em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();
             logger.error(e.getMessage());
         }
-        em.getTransaction().commit();
     }
 }
