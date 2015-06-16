@@ -5,7 +5,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.db.DB;
-import play.db.Database;
 import play.test.WithApplication;
 
 import javax.sql.DataSource;
@@ -13,13 +12,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Created by Administrator on 2015/6/15.
+ * Created by Administrator.
+ * 2015/6/15 20:18
  */
 public class DataBaseTest extends WithApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(DataBaseTest.class);
 
-    Database database;
+    private static final String DATA_SOURCE = "playdb";
 
     @Before
     public void init() {
@@ -35,8 +35,9 @@ public class DataBaseTest extends WithApplication {
 
     @Test
     public void test() throws SQLException {
-        DataSource ds = DB.getDataSource();
+        DataSource ds = DB.getDataSource(DATA_SOURCE);
         Connection connection = ds.getConnection();
         Assert.assertFalse(connection.isClosed());
     }
+
 }

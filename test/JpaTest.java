@@ -18,10 +18,11 @@ public class JpaTest extends WithApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(JpaTest.class);
     private EntityManager em;
+    private static final String ENTITY_MANAGER = "playdb";
 
     @Before
     public void create() {
-        em = JPA.em("default");
+        em = JPA.em(ENTITY_MANAGER);
         TestModel tm = new TestModel();
         tm.setResult(false);
         em.getTransaction().begin();
