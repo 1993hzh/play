@@ -2,24 +2,18 @@ package models;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Administrator on 2015/6/15.
  */
 @Entity
 @Table(name = "T_TEST")
-public class TestModel {
-
-    @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    public String id;
+public class TestModel extends AbstractModel {
 
     private boolean result = false;
+
+    private Integer num;
 
     public boolean isResult() {
         return result;
@@ -29,11 +23,11 @@ public class TestModel {
         this.result = result;
     }
 
-    public String getId() {
-        return id;
+    public Integer getNum() {
+        return num;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setNum(Integer num) {
+        this.num = num;
     }
 }
