@@ -50,7 +50,7 @@ public class JpaPerformanceTest extends WithApplication {
             long before = System.currentTimeMillis();
             for (int i = 0; i < SEARCH_TIMES; i++) {
                 int num = random.nextInt(TIMES) + 1;
-                em.find(TestModel.class, num);
+                TestModel tm = em.find(TestModel.class, num);
             }
             long after = System.currentTimeMillis();
             Logger.debug("Query " + SEARCH_TIMES + " times costs: " + (after - before));
